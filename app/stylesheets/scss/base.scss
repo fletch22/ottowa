@@ -1,0 +1,29 @@
+@import '../../stylesheets/scss/config/colors';
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  background: url(../../../images/iceland-crater.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.foo {
+  border: 1px solid red;
+}
+
+.app {
+  background-color: lightgray;
+  height: 50px;
+  border: 1px solid $cowardly;
+}
+
+.bap {
+  background-color: red;
+  height: 25px;
+}
+
