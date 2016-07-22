@@ -67,6 +67,12 @@ module.exports = {
       loader: "file"
     }
     ]
+  },
+  node: {
+    fs: 'empty',
+    net: 'empty',
+    dns: 'empty',
+    child_process: 'empty'
   }
 };
 

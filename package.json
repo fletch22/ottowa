@@ -19,9 +19,12 @@
   },
   "homepage": "https://github.com/christianalfoni/webpack-express-boilerplate",
   "scripts": {
-    "test": "",
+    "test": "karma start ",
+    "int-test": "karma start --EXECUTE_INTEGRATION_TESTS=true",
     "start": "node server",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
+    "btd": "babel ./alt -d ./lib",
+    "d": "node ./lib/deploy.js",
     "eslint": "eslint .",
     "jscs": "jscs ."
   },
@@ -96,6 +99,17 @@
     "autoprefixer-loader": "^3.2.0",
     "babel-cli": "*",
     "extract-text-webpack-plugin": "^1.0.1",
+    "karma": "^1.1.1",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-mocha": "^1.1.1",
+    "karma-mocha-reporter": "^2.0.4",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "karma-sinon": "^1.0.5",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^1.7.0",
+    "mocha": "^2.5.3",
     "raw-loader": "^0.5.1",
     "react-router": "^2.5.2"
   }

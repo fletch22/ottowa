@@ -1,5 +1,9 @@
 @import '../../stylesheets/scss/config/colors';
 
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap-sprockets";
+@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+
 html {
   font-family: sans-serif;
 }

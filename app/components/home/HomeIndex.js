@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { Button } from 'react-bootstrap';
 
 
 class HomeIndex extends React.Component {
@@ -9,9 +10,14 @@ class HomeIndex extends React.Component {
     return (
       <div className="app">
         <div>
-          Foo
+          <Button bsStyle="success">Primary</Button>
         </div>
-        <Link to="about">About</Link>
+        <div>
+          <Link to="about">About</Link>
+        </div>
+        <div>
+          <Link to="visualComponents">Visual Components</Link>
+        </div>
       </div>
     )
   }

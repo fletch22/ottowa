@@ -1,27 +1,15 @@
 import React from 'react';
-import './stylesheets/scss/base.scss';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import reducer from './reducers/index';
-import Routes from './Routes';
+import NavBar from './NavBar';
 
-export default class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {test: 'foo'};
-  }
-
+class App extends React.Component {
   render() {
-
-    let store = applyMiddleware(thunk)(createStore)(reducer, this.state);
-
     return (
-    <Provider store={store}>
-      <Routes />
-    </Provider>
-
-    );
+      <div className="app">
+        <NavBar />
+        {this.props.children}
+      </div>
+    )
   }
 }
+
+export default App;

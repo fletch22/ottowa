@@ -1,48 +1,4 @@
-const webpackConfig = require('./old.webpack.hot.config.js');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const path = require('path');
-
-const PATHS = {
-  app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build')
-};
-
-const webpackConfigCustom = {
-  watch: true,
-  resolve: {
-    extensions: ['', '.js', '.scss'],
-    modulesDirectories: ['app', 'node_modules']
-  },
-  entry: ['./app/css/modules/header.scss', 'bootstrap-loader'],
-  devtool: 'inline-source-map',
-  module: {
-    loaders: [
-      { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000' },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015']
-        }
-      },
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        loader: `style-loader!css-loader!postcss-loader!sass-loader?includePaths[]=${path.resolve(__dirname, './app')}`,
-        include: PATHS.app
-      },
-      {
-        test: /bootstrap-sass\/assets\/javascripts\//,
-        exclude: /node_modules/,
-        loader: 'imports?jQuery=jquery'
-      }
-    ]
-  },
-  plugins: [
-    new ExtractTextPlugin('[name].css')
-  ]
-};
+const webpackConfig = require('./webpack.config.js');
 
 const TorontoKarmaConfig = function TorontoKarmaConfig(config) {
   config.set({
@@ -52,24 +8,24 @@ const TorontoKarmaConfig = function TorontoKarmaConfig(config) {
     frameworks: ['mocha', 'chai', 'sinon'],
     // list of files / patterns to load in the browser
     files: [
-      'node_modulesXXX/whatwg-fetch/fetch.js'
+      './node_modules/whatwg-fetch/fetch.js'
     ],
     // list of files to exclude
     exclude: [
     ],
     plugins: [
+      'karma-webpack',
       'karma-chrome-launcher',
       'karma-phantomjs-launcher',
       'karma-mocha',
       'karma-mocha-reporter',
       'karma-chai',
-      'karma-sinon',
-      'karma-webpack'
+      'karma-sinon'
     ],
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'app/css/modules/header.scss': ['webpack']
+      'app/stylesheets/scss/base.scss': ['webpack']
     },
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -95,14 +51,14 @@ const TorontoKarmaConfig = function TorontoKarmaConfig(config) {
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false
   });
-  if (process.env.EXECUTE_INTEGRATION_TESTS) {
+  if (config.EXECUTE_INTEGRATION_TESTS) {
     console.log('Running INTEGRATION tests only ...');
-    config.files.push({ pattern: 'app/js/__integrationTests__/test-context.js', watched: false });
-    config.preprocessors['app/js/__integrationTests__/test-context.js'] = ['webpack'];
+    config.files.push({ pattern: 'app/__integration_tests__/test-context.js', watched: false });
+    config.preprocessors['app/__integration_tests__/test-context.js'] = ['webpack'];
   } else {
     console.log('Running UNIT tests only ...');
-    config.files.push({ pattern: 'app/js/__tests__/test-context.js', watched: false });
-    config.preprocessors['app/js/__tests__/test-context.js'] = ['webpack'];
+    config.files.push({ pattern: 'app/__tests__/test-context.js', watched: false });
+    config.preprocessors['app/__tests__/test-context.js'] = ['webpack'];
   }
 };
 
