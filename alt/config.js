@@ -1,15 +1,27 @@
+import fs from 'fs';
+import path from 'path';
+
+const loadingDockPath = '/home/f22/loading-dock/';
+const stagingPath = path.join(loadingDockPath, 'staging');
+
 const Config = {
-  LocalVagrant: {
-    host: '127.0.0.1',
-    port: '2222',
-    username: 'vagrant',
-    privateKeyPath: '/Users/fletch22/.ssh/id_rsa'
-  },
-  DigitalOcean: {
-    host: '104.236.252.246',
-    port: '22',
-    username: 'fletch22',
-    password: 'iwaglmlah'
+  ServerInfo: {
+    SshConfig: {
+      LocalVagrant: {
+        host: 'localhost',
+        port: '2203',
+        username: 'f22',
+        loadingDockPath: loadingDockPath,
+        path: stagingPath,
+        privateKey: fs.readFileSync('/Users/fletch22/.ssh/remote-deploy')
+      },
+      host: '104.236.252.246',
+      DigitalOcean: {
+        port: '22',
+        username: 'fletch22',
+        password: 'iwaglmlah'
+      }
+    }
   }
 };
 

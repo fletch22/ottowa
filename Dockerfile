@@ -1,15 +1,12 @@
-FROM    centos:centos6
+FROM node:argon
 
-# Enable EPEL for Node.js
-RUN     rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-# Install Node.js and npm
-RUN     yum install -y npm
+RUN mkdir -p /usr/src/website
 
-# Bundle app source
-COPY ./ /app/
+COPY . /usr/src/website
 
-# Install app dependencies
-RUN cd /app;
+RUN ./usr/src/website/npm install
 
-EXPOSE 8081
-CMD ["node", "/app/server.js"]
+# replace this with your application's default port
+EXPOSE 8888
+
+CMD['npm', 'start']
