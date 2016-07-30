@@ -22,7 +22,8 @@
     "test": "karma start ",
     "int-test": "karma start --EXECUTE_INTEGRATION_TESTS=true",
     "start": "node server",
-    "build": "rimraf dist && cross-env NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
+    "build4Production": "rm -rf ./dist && cross-env NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
+    "run4Production": "NODE_ENV=production PORT=8888 node server.js",
     "btd": "babel ./alt -d ./build",
     "d": "node ./build/deploy.js",
     "eslint": "eslint .",
@@ -71,7 +72,6 @@
     "node-sass": "^3.8.0",
     "path": "^0.12.7",
     "path-exists": "^3.0.0",
-    "phantomjs-prebuilt": "^2.1.7",
     "postcss-loader": "^0.9.1",
     "raw-loader": "^0.5.1",
     "react": "^15.2.1",
@@ -91,8 +91,6 @@
     "rimraf": "^2.5.3",
     "sass-loader": "^4.0.0",
     "scp2": "^0.5.0",
-    "sinon": "^1.17.4",
-    "sinon-chai": "^2.8.0",
     "ssh2": "^0.5.0",
     "stats-webpack-plugin": "^0.4.0",
     "style-loader": "^0.13.1",
@@ -121,6 +119,9 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.5.3",
+    "phantomjs-prebuilt": "^2.1.7",
+    "sinon": "^1.17.4",
+    "sinon-chai": "^2.8.0",
     "tar-fs": "^1.13.0"
   }
 }

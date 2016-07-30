@@ -9,7 +9,7 @@ const Config = {
     SshConfig: {
       LocalVagrant: {
         host: 'localhost',
-        port: '2203',
+        port: '2222',
         username: 'f22',
         loadingDockPath: loadingDockPath,
         path: stagingPath,

@@ -34,45 +34,45 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('development')
     })
   ],
-  module: {
-    loaders: [
-      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
-      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader' },
-      {
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        "presets": ["react", "es2015", "stage-0", "react-hmre"]
-      }
-    }, {
-      test: /\.json?$/,
-      loader: 'json'
-    },
-    {
-      test: /\.scss$/,
-      loaders: [
-        'style',
-        'css',
-        'autoprefixer?browsers=last 3 versions',
-        'sass?outputStyle=expanded'
-      ]
-    },
-    {
-      test: /bootstrap-sass\/assets\/javascripts\//,
-      loader: 'imports?jQuery=jquery'
-    },
-    {
-      test: /\.(jpe?g|png|gif|svg)$/,
-      loader: "file"
-    }
-    ]
-  },
   node: {
     fs: 'empty',
     net: 'empty',
     dns: 'empty',
     child_process: 'empty'
+  },
+  module: {
+    loaders: [
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader' },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+        query: {
+          "presets": ["react", "es2015", "stage-0", "react-hmre"]
+        }
+      }, {
+        test: /\.json?$/,
+        loader: 'json'
+      },
+      {
+        test: /\.scss$/,
+        loaders: [
+          'style',
+          'css',
+          'autoprefixer?browsers=last 3 versions',
+          'sass?outputStyle=expanded'
+        ]
+      },
+      {
+        test: /bootstrap-sass\/assets\/javascripts\//,
+        loader: 'imports?jQuery=jquery'
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        loader: "file"
+      }
+    ]
   }
 };
 
