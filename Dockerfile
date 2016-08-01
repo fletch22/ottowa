@@ -8,6 +8,8 @@ COPY . ${appDir}
 
 WORKDIR ${appDir}
 
+RUN chmod 600 .npmrc
+
 RUN ./alt/global-setup/install-global-prod-dep.sh
 
 RUN npm install
